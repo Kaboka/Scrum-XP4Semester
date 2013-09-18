@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import view.Factory;
 
 /**
  *
@@ -36,10 +37,10 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
       
         String commandKey = request.getParameter("cmd");
-        Command command = null;
+        Command command = Factory.getInstance().findCommand(commandKey);
         String target = null;
         try {
-            
+            target = command.execute(request);
           
         } catch(Exception e){
             
