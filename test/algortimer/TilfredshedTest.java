@@ -7,6 +7,8 @@ package algortimer;
 import classes.Elev;
 import classes.Fag;
 import classes.Tilfredshed;
+import interfaces.IElev;
+import interfaces.IFag;
 import interfaces.TilfredshedInterface;
 import java.util.ArrayList;
 import org.jmock.Expectations;
@@ -47,43 +49,46 @@ public class TilfredshedTest {
     @Test
     public void testSomeMethod() {
         Mockery context = new JUnit4Mockery();
-        final TilfredshedInterface mockTilfredshed = context.mock(TilfredshedInterface.class);
-        final Elev per = new Elev("Per");
-        final Elev hans = new Elev("Hans");
-        final Elev grethe = new Elev("Grethe");
-        final Elev sigurd = new Elev("sig");
-        final Fag cPlus = new Fag("C++");
-        final Fag android = new Fag("Android");
-        final Fag cSharp = new Fag("C#");
-        final Fag security = new Fag("Security");
+        final IElev per = context.mock(IElev.class);
+
+        context.checking(new Expectations(){{
+            oneOf(per).setForstePrio1(new Fag("cPlus"));
+            will(returnValue("cPlus"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).getForstePrio1();
+            will(returnValue("cPlus"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).setForstePrio2(new Fag("cSharp"));
+            will(returnValue("cSharp"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).getForstePrio2();
+            will(returnValue("cSharp"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).setAndenPrio1(new Fag("android"));
+            will(returnValue("android"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).getAndenPrio1();
+            will(returnValue("android"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).setAndenPrio2(new Fag("security"));
+            will(returnValue("security"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).getAndenPrio2();
+            will(returnValue("security"));
+        }});
+        context.checking(new Expectations(){{
+            oneOf(per).getTilfredshed();
+            will(returnValue(4));
+        }});
         
-        per.setForstePrio1(cPlus);
-        per.setForstePrio2(cSharp);
-        per.setAndenPrio1(android);
-        per.setAndenPrio2(security);
-        hans.setForstePrio1(security);
-        hans.setForstePrio2(cPlus);
-        hans.setAndenPrio1(cSharp);
-        hans.setAndenPrio2(android);
-        sigurd.setAndenPrio1(android);
-        sigurd.setAndenPrio2(cPlus);
-        
-            ArrayList<Elev> elever = new ArrayList<Elev>();
-        ArrayList<Fag> poolA = new ArrayList<Fag>();
-        ArrayList<Fag> poolB = new ArrayList<Fag>();
-        elever.add(per);
-        elever.add(hans);
-        elever.add(grethe);
-        elever.add(sigurd);
-        poolA.add(cPlus);
-        poolA.add(security);
-        poolB.add(android);
-        poolB.add(cSharp);
-        Tilfredshed tilfreds = new Tilfredshed();
-        tilfreds.udregnTilfredshed(elever, poolA, poolB);
-        assertEquals(4, per.getTilfredshed());
-        assertEquals(3, hans.getTilfredshed());
-        assertEquals(1, grethe.getTilfredshed());
-        assertEquals(2, sigurd.getTilfredshed());
+         
+         
     }
 }

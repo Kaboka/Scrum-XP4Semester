@@ -9,5 +9,5 @@ import classes.Fag;
 import java.util.Collection;
 
 public interface TilfredshedInterface {
-    public void udregnTilfredshed(Collection<Elev> elever, Collection<Fag> poolA, Collection<Fag> poolB);
+    public void udregnTilfredshed(Collection<IElev> elever, Collection<Fag> poolA, Collection<Fag> poolB);
 }
