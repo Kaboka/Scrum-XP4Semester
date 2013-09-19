@@ -41,7 +41,6 @@ public class SortingThingTest {
     @Test
     public void testSomeMethod() {
 
-
         //set up
         Mockery context = new JUnit4Mockery();
         final Istudent mockIstudent1 = context.mock(Istudent.class);
@@ -68,11 +67,8 @@ public class SortingThingTest {
         students.add(mockIstudent9);
         students.add(mockIstudent10);
 
-
-
         // set up expectations
-        context.checking(new Expectations() {
-            {
+        context.checking(new Expectations() {{
                 oneOf(mockIstudent1).getRank();
                 will(returnValue(4));
                 oneOf(mockIstudent2).getRank();
@@ -93,14 +89,13 @@ public class SortingThingTest {
                 will(returnValue(2));
                 oneOf(mockIstudent10).getRank();
                 will(returnValue(1));}
-            
         });
-
+        
         //execute
-        SortingThing.sort(students);
+        students = SortingThing.sort(students);
+        
         //verify
-        assertEquals(students.get(0).getRank(), 1);
-        assertEquals(students.get(students.size()-1).getRank(), 4);
+        assertEquals(mockIstudent5, students.get(0));
 
     }
 }
