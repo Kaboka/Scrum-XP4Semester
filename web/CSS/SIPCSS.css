@@ -1,0 +1,82 @@
+/* 
+    Document   : SIPCSS
+    Created on : 19-09-2013, 08:46:41
+    Author     : Søren
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#PoolB{
+    margin-top: 0px;
+}
+.choosenSubjects{
+    float : left;
+    margin-top: 50px;
+}
+#frame{
+    width: 800px;
+    
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100 px;
+    
+}
+#electiveSubjects{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.poolbuttons{
+    margin-bottom: 70px;
+}
+table.tabelOverView {
+    border:1px solid green;
+    width: 680px;
+}
+th.tabelOverView{
+    background-color: greenyellow;
+}
+div.tabelOverView{
+    margin-top: 25px;
+    width: 700px;
+    float: left;
+    
+    margin-left: 50px;
+}
+
+.saveButton{
+  float: right;
+  
+  margin-top: 10px;
+  margin-right: 100px;
+}
+.subjects{
+    
+    margin-top: 50px;
+    float: left;
+    width : 250px;
+    text-align: center;
+    
+}
+#PoolA{
+    float: none;
+}
+.subjects select{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 10 px;
+    background-color: transparent;
+    
+} 
+
+
+.chooseButton{
+    float: left;
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
