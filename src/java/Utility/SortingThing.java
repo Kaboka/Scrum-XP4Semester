@@ -5,7 +5,9 @@
 package Utility;
 
 import RenameLaterInterfaces.Istudent;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  *
@@ -13,7 +15,19 @@ import java.util.Collection;
  */
 public class SortingThing {
     
-    static Collection<Istudent> sort(Collection<Istudent> students){
-        return null;
+    static void sort(ArrayList<Istudent> students){
+        
+        int size = students.size();
+        Istudent temp;
+        for(int i = 0; i < size; i++){
+            for(int y = 1; y <(size-i);y++){
+                if(students.get(y-1).getRank() > students.get(i).getRank()){
+                    temp = students.get(y-1);
+                    students.set(y-1, students.get(i));
+                    students.set(i, temp);
+                    
+                }
+            }
+        }
     }
 }

@@ -6,7 +6,6 @@ package Utility;
 
 import RenameLaterInterfaces.Istudent;
 import java.util.ArrayList;
-import java.util.Collection;
 import org.jmock.Expectations;
 import static org.jmock.Expectations.returnValue;
 import org.jmock.Mockery;
@@ -93,8 +92,8 @@ public class SortingThingTest {
                 oneOf(mockIstudent9).getRank();
                 will(returnValue(2));
                 oneOf(mockIstudent10).getRank();
-                will(returnValue(1));
-            }
+                will(returnValue(1));}
+            
         });
 
         //execute
