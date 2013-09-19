@@ -18,11 +18,14 @@ public class Tilfredshed implements TilfredshedInterface{
             }else if((poolA.contains(elev.getForstePrio1()) || poolA.contains(elev.getForstePrio2()))
                     && (poolB.contains(elev.getForstePrio1()) || poolB.contains(elev.getForstePrio2()))){
                 elev.setTilfredshed(4);
+            }else if((poolA.contains(elev.getForstePrio1()) || poolA.contains(elev.getForstePrio2()) && 
+                    poolB.contains(elev.getAndenPrio1()) || poolB.contains(elev.getAndenPrio2()))
+                    || (poolB.contains(elev.getForstePrio1()) || poolB.contains(elev.getForstePrio2()) && 
+                    poolA.contains(elev.getAndenPrio1()) || poolA.contains(elev.getAndenPrio2()))){
+                elev.setTilfredshed(3);
             }else if((poolA.contains(elev.getAndenPrio1()) || poolA.contains(elev.getAndenPrio2())) && 
                     (poolB.contains(elev.getAndenPrio1()) || poolB.contains(elev.getAndenPrio2()))){
                 elev.setTilfredshed(2);
-            }else{
-                elev.setTilfredshed(3);
             }
         }
     }
