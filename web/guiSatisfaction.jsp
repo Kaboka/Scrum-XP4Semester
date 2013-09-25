@@ -10,6 +10,17 @@
         <link rel="stylesheet" type="text/css" href="CSS/SIPCSS.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Electives</title>
+        <script>
+            $(function(){
+                $("#addA").click(function(){
+                    $.ajax({url: "AjaxServlet?id=" + id,
+                    cache: false,
+                    dataType: "json",
+                    success: updateColors});
+                
+                })
+            })
+        </script>
     </head>
     <body>
         <div id="frame" >

@@ -15,7 +15,7 @@ import java.util.Collections;
  */
 public class SortingThing {
     
-    static ArrayList<Istudent> sort(ArrayList<Istudent> students){
+    public static ArrayList<Istudent> sort(ArrayList<Istudent> students){
         
         ArrayList<Istudent> temp1 = new ArrayList<Istudent>();
         ArrayList<Istudent> temp2 = new ArrayList<Istudent>();
