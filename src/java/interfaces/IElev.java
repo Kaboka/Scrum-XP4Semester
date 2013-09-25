@@ -24,9 +24,9 @@ public interface IElev {
 
     void setAndenPrio2(Fag andenPrio2);
 
-    String getNavn();
+    String getName();
 
-    void setNavn(String navn);
+    void setName(String name);
     
     void setTilfredshed(int til);
     

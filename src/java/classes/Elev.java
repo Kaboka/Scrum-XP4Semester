@@ -8,11 +8,11 @@ public class Elev implements IElev{
     Fag forstePrio2;
     Fag andenPrio1;
     Fag andenPrio2;
-    String navn;
+    String name;
     int tilfredshed;
     
-    public Elev(String navn){
-        this.navn = navn;       
+    public Elev(String name){
+        this.name = name;       
     };
 
     @Override
@@ -60,13 +60,13 @@ public class Elev implements IElev{
     }
 
     @Override
-    public String getNavn() {
-        return navn;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public void setName(String name) {
+        this.name = name;
     }
     
     /**

@@ -43,13 +43,13 @@ public class AjaxServlet extends HttpServlet {
         peter.setAndenPrio1(new Fag("CSharp"));
         peter.setAndenPrio2(new Fag("Security"));
         peter.setTilfredshed(1);
-        IElev anders = new Elev("Peter");
+        IElev anders = new Elev("Anders");
         anders.setForstePrio1(new Fag("Security"));
         anders.setForstePrio2(new Fag("CPlus"));
         anders.setAndenPrio1(new Fag("Android"));
         anders.setAndenPrio2(new Fag("CSharp"));
         anders.setTilfredshed(4);
-        IElev sigurd = new Elev("Peter");
+        IElev sigurd = new Elev("Sigurd");
         sigurd.setForstePrio1(new Fag("Java"));
         sigurd.setForstePrio2(new Fag("UML"));
         sigurd.setAndenPrio1(new Fag("Harlem Shake"));
