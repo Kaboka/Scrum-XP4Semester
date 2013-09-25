@@ -5,6 +5,8 @@
 package Utility;
 
 import RenameLaterInterfaces.Istudent;
+import classes.Elev;
+import interfaces.IElev;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -15,17 +17,17 @@ import java.util.Collections;
  */
 public class SortingThing {
     
-    public static ArrayList<Istudent> sort(ArrayList<Istudent> students){
+    public static ArrayList<IElev> sort(ArrayList<IElev> students){
         
-        ArrayList<Istudent> temp1 = new ArrayList<Istudent>();
-        ArrayList<Istudent> temp2 = new ArrayList<Istudent>();
-        ArrayList<Istudent> temp3 = new ArrayList<Istudent>();
-        ArrayList<Istudent> temp4 = new ArrayList<Istudent>();
-        ArrayList<Istudent> tempResult = new ArrayList<Istudent>();
+        ArrayList<IElev> temp1 = new ArrayList<>();
+        ArrayList<IElev> temp2 = new ArrayList<>();
+        ArrayList<IElev> temp3 = new ArrayList<>();
+        ArrayList<IElev> temp4 = new ArrayList<>();
+        ArrayList<IElev> tempResult = new ArrayList<>();
         
         
-        for(Istudent student : students){
-            int rank = student.getRank(); 
+        for(IElev student : students){
+            int rank = student.getTilfredshed(); 
             if(rank == 1){
                 temp1.add(student);
             }else if(rank == 2){

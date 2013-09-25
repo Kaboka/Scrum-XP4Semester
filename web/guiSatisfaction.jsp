@@ -10,13 +10,20 @@
         <link rel="stylesheet" type="text/css" href="CSS/SIPCSS.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Electives</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js">      
+        </script>
         <script>
             $(function(){
                 $("#addA").click(function(){
-                    $.ajax({url: "AjaxServlet?id=" + id,
+                    alert("JSDNAJD")
+                    $.ajax({url: "AjaxServlet",
                     cache: false,
                     dataType: "json",
-                    success: updateColors});
+                    success: function(SortedList){
+                        console.log(SortedList)
+                        alert("SDAD")
+                    }});
+                
                 
                 })
             })
