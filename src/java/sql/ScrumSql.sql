@@ -14,3 +14,14 @@ FIRST_PRIO_2 int references SUBJECT(ID),
 SECOND_PRIO_1 int references SUBJECT(ID),
 SECOND_PRIO_2 int references SUBJECT(ID)
 );
+
+insert into SUBJECT
+values
+(1, 'C'),
+(2, 'C++'),
+(3, 'C#'),
+(4, 'CFlat');
+
+insert into STUDENT
+values
+(1, 'Ole Jensen', 1, 2, 3, 4);
