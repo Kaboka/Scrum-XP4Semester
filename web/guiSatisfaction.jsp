@@ -18,11 +18,14 @@
         <title>Electives</title>
         <script>
             $(function() {
+                var poolA = new Array();
+                var poolB = new Array();
 
                 $("#addA").click(function() {
                     if ($("#eSubjects").val() != null) {
                         $("#poolAList").append(new Option($("#eSubjects").val(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
+                        makeArray();
                         getStudents();
                     }
                 });
@@ -30,6 +33,7 @@
                     if ($("#eSubjects").val() != null) {
                         $("#poolBList").append(new Option($("#eSubjects").val(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
+                        makeArray();
                         getStudents();
                     }
                 });
@@ -37,6 +41,7 @@
                     if ($("#poolAList").val() != null) {
                         $("#eSubjects").append(new Option($("#poolAList").val(), $("#poolAList").val()));
                         $("#poolAList option[value='" + $("#poolAList").val() + "']").remove();
+                        makeArray();
                         getStudents();
                     }
                 });
@@ -44,18 +49,36 @@
                     if ($("#poolBList").val() != null) {
                         $("#eSubjects").append(new Option($("#poolBList").val(), $("#poolBList").val()));
                         $("#poolBList option[value='" + $("#poolBList").val() + "']").remove();
+                        makeArray();
                         getStudents();
                     }
                 });
+
                 $("#Test").click(function() {
                     var string = generateURL();
                     alert(string);
                 });
+
+                function makeArray()
+                {
+                    var count = 0;
+                    $("#poolAList > option").each(function() {
+                        poolA[count] = $(this).val();
+                        count++;
+                    });
+
+                    count = 0;
+                    $("#poolBList > option").each(function() {
+                        poolB[count] = $(this).val();
+                        count++;
+                    });
+                }
+
                 function generateURL() {
                     var result = "AjaxServlet?";
                     var count = 1;
                     var poolA = "poolAFag"
-                    var poolB= "poolBFag"
+                    var poolB = "poolBFag"
                     $("#poolAList > option").each(function() {
                         if (count === 1)
                         {
@@ -70,10 +93,10 @@
                             result += "&" + poolA + "=" + $(this).val();
                         }
                     });
-                    
+
                     count = 1;
                     $("#poolBList > option").each(function() {
-                        poolB= "poolBFag"
+                        poolB = "poolBFag"
                         poolB += count
                         count++;
                         result += "&" + poolB + "=" + $(this).val();
@@ -83,16 +106,13 @@
 
                 function getStudents() {
                     if ($("#poolAList option").length != 0 & $("#poolBList option").length != 0) {
-                        alert("Im in AJAX")
-                     //   var url = generateURL();
-                     var poolAList = new Array ("C#","HCI");
-                     var poolBList = ["C++","Test"];
-                     var json = JSON.stringify(poolAList);
-                      var json2 = JSON.stringify(poolBList);
+                        //   var url = generateURL();
+                        var json = JSON.stringify(poolA);
+                        var json2 = JSON.stringify(poolB);
                         $.ajax({url: "AjaxServlet",
                             cache: false,
                             dataType: "json",
-                            data: {poolA:json,poolB:json2},
+                            data: {poolA: json, poolB: json2},
                             success: ranking
                         });
                     }

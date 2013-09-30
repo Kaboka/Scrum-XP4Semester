@@ -39,29 +39,16 @@ public class AjaxServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        IElev peter = new Elev("Peter");
-        peter.setForstePrio1(new Fag("C#"));
-        peter.setForstePrio2(new Fag("Apps and innovation"));
-        peter.setAndenPrio1(new Fag("HCI"));
-        peter.setAndenPrio2(new Fag("Test"));
-        peter.setTilfredshed(1);
-        IElev anders = new Elev("Anders");
-        anders.setForstePrio1(new Fag("Test"));
-        anders.setForstePrio2(new Fag("Database"));
-        anders.setAndenPrio1(new Fag("Project management"));
-        anders.setAndenPrio2(new Fag("Apps and innovation"));
-        anders.setTilfredshed(4);
-        IElev sigurd = new Elev("Sigurd");
-        sigurd.setForstePrio1(new Fag("Globalization"));
-        sigurd.setForstePrio2(new Fag("C#"));
-        sigurd.setAndenPrio1(new Fag("HCI"));
-        sigurd.setAndenPrio2(new Fag("Algorithms"));
-        sigurd.setTilfredshed(3);
+        IElev elev1 = new Elev("Bjarke Carlsen",new Fag("C#"),new Fag("HCI"),new Fag("Apps and innovation"),new Fag("Algorithms"));
+        IElev elev2 = new Elev("Martin Olgenkjær",new Fag("Project management"),new Fag("HCI"),new Fag("Databases"),new Fag("Test"));
+        IElev elev3 = new Elev("Henrik Stavnem",new Fag("Apps and innovation"),new Fag("Globalization"),new Fag("C#"),new Fag("Databases"));
+        IElev elev4 = new Elev("Nicklas Thomsen",new Fag("Algorithms"),new Fag("Project management"),new Fag("HCI"),new Fag("Test"));
         //StudentClient sC = new StudentClient();
         ArrayList<IElev> elever = new ArrayList<>();
-        elever.add(peter);
-        elever.add(anders);
-        elever.add(sigurd);
+        elever.add(elev1);
+        elever.add(elev2);
+        elever.add(elev3);
+        elever.add(elev4);
         Collection<Fag> poolA, poolB;
         poolA = convertToFag(req.getParameter("poolA"));
         poolB = convertToFag(req.getParameter("poolB"));
@@ -90,6 +77,7 @@ public class AjaxServlet extends HttpServlet {
  
  public Collection<Fag> convertToFag (String string){
      Collection<Fag> fagListe = new ArrayList<Fag>();
+     string = string.replaceAll("\"", "");
      string = string.substring(1, string.length()-1);
      
      String[] fagArray = string.split(",");
@@ -97,6 +85,7 @@ public class AjaxServlet extends HttpServlet {
      for (int i = 0; i < fagArray.length; i++) {
          Fag fag = new Fag (fagArray[i]);
          fagListe.add(fag);
+         System.out.println("Fag nr:" + i + ", navn: " + fag.getName());
      }
      
      return fagListe;
