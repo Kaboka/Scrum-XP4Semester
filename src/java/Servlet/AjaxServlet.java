@@ -10,6 +10,7 @@ import Utility.SortingThing;
 import classes.Elev;
 import classes.Fag;
 import com.google.gson.Gson;
+import com.sun.jersey.json.impl.writer.A2EXmlStreamWriterProxy;
 import commands.AjaxCommand;
 import interfaces.IElev;
 import java.io.IOException;
@@ -22,6 +23,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import view.Factory;
 
 /**
@@ -37,39 +41,56 @@ public class AjaxServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        IElev peter = new Elev("Peter");
+        Elev peter = new Elev("Peter");
         peter.setForstePrio1(new Fag("Android"));
         peter.setForstePrio2(new Fag("CPlus"));
         peter.setAndenPrio1(new Fag("CSharp"));
         peter.setAndenPrio2(new Fag("Security"));
         peter.setTilfredshed(1);
-        IElev anders = new Elev("Anders");
+        Elev anders = new Elev("Anders");
         anders.setForstePrio1(new Fag("Security"));
         anders.setForstePrio2(new Fag("CPlus"));
         anders.setAndenPrio1(new Fag("Android"));
         anders.setAndenPrio2(new Fag("CSharp"));
         anders.setTilfredshed(4);
-        IElev sigurd = new Elev("Sigurd");
+        Elev sigurd = new Elev("Sigurd");
         sigurd.setForstePrio1(new Fag("Java"));
         sigurd.setForstePrio2(new Fag("UML"));
         sigurd.setAndenPrio1(new Fag("Harlem Shake"));
         sigurd.setAndenPrio2(new Fag("Magic The Gathering"));
         sigurd.setTilfredshed(3);
-        //StudentClient sC = new StudentClient();
-        ArrayList<IElev> elever = new ArrayList<>();
+        StudentClient sC = new StudentClient();
+        ArrayList<Elev> elever = new ArrayList<>();
         elever.add(peter);
         elever.add(anders);
         elever.add(sigurd);
+        final ArrayList<Elev> studentsSorted = new ArrayList<>();
         
-        //for(int i = 0; ARRAYLISTIGETFROMJSP.size(); i++){
-        //    tempArray.add(sC.find_JSON(Istudent.class ,id)); 
-        //}
-        //ArrayList<Elev> tempElev; 
-        //tempElev = SortingThing.sort(elever);
+        
+        JSONArray students = sC.findAll_JSON(JSONArray.class);
+        for(int i = 0; i < students.length(); i++){
+            try {
+                JSONObject student = (JSONObject)students.get(i);
+                Elev aElev = new Elev(student.getString("fullName"));
+                JSONObject firstPrio1 = (JSONObject)student.get("firstPrio1");
+                JSONObject firstPrio2 = (JSONObject)student.get("firstPrio2");
+                JSONObject secondPrio1 = (JSONObject)student.get("secondPrio1");
+                JSONObject secondPrio2 = (JSONObject)student.get("secondPrio2");
+                aElev.setForstePrio1(new Fag(firstPrio1.getString("name")));
+                aElev.setForstePrio2(new Fag(firstPrio2.getString("name")));
+                aElev.setAndenPrio1(new Fag(secondPrio1.getString("name")));
+                aElev.setAndenPrio2(new Fag(secondPrio2.getString("name")));
+                aElev.setTilfredshed(1);
+                studentsSorted.add(aElev);
+            } catch (JSONException ex) {
+                Logger.getLogger(AjaxServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         Gson json = new Gson();
-        String something = json.toJson(SortingThing.sort(elever));
-        System.err.println(something);
-        out.print(something);
+        String returnSorted = json.toJson(SortingThing.sort(studentsSorted));
+        System.err.println(returnSorted);
+        out.print(returnSorted);
         
 
        
