@@ -3,10 +3,10 @@ package classes;
 
 public class Fag {
     
-    String navn;
+    String name;
     
-    public Fag(String navn){
-        this.navn = navn;
+    public Fag(String name){
+        this.name = name;
     };
     
     

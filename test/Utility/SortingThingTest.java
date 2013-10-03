@@ -92,7 +92,7 @@ public class SortingThingTest {
         });
         
         //execute
-        students = SortingThing.sort(students);
+        //students = SortingThing.sort(students);
         
         //verify
         assertEquals(mockIstudent5, students.get(0));

@@ -4,6 +4,7 @@
  */
 package view;
 
+import commands.AjaxCommand;
 import commands.Command;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +15,13 @@ public class Factory {
     private static Factory instance = null;
     
     private Map<String, Command> commands;
+    private Map<String, AjaxCommand> ajaxCommands;
     
     private Factory(){
         commands = new HashMap<String, Command>();
+        ajaxCommands = new HashMap<String, AjaxCommand>();
+        
+        
     }
     
     public static Factory getInstance(){
@@ -31,5 +36,12 @@ public class Factory {
             key = "index";
         }
         return commands.get(key);
+    }
+    
+    public AjaxCommand findAjaxCommand(String key){
+        if(key == null){
+            key = "index";
+        }
+        return ajaxCommands.get(key);
     }
 }

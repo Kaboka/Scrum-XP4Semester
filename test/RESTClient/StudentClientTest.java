@@ -4,7 +4,10 @@
  */
 package RESTClient;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.google.gson.Gson;
+import com.sun.jersey.api.client.ClientResponse;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -83,10 +86,13 @@ public class StudentClientTest {
      * Test of findAll_JSON method, of class StudentClient.
      */
     @Test
-    public void testFindAll_JSON() {
+    public void testFindAll_JSON() throws JSONException {
         System.out.println("findAll_JSON");
         StudentClient instance = new StudentClient();
-        Object result = instance.find_JSON(JSONObject.class, "1");
+        JSONArray result = instance.findAll_JSON(JSONArray.class); 
+        JSONObject o = (JSONObject)result.get(0);
+        System.out.println(o.toString());
+        System.out.println(o.getString("fullName"));
         assertNotNull(result);
     }
 
@@ -189,10 +195,10 @@ public class StudentClientTest {
      */
     @Test
     public void testFind_JSON() {
-//        System.out.println("find_JSON");
-//        StudentClient instance = new StudentClient();
-//        Object result = instance.find_JSON(JSONObject.class, "1");
-//        assertNotNull(result);
+        System.out.println("find_JSON");
+        StudentClient instance = new StudentClient();
+        Object result = instance.find_JSON(JSONObject.class, "1");
+        assertNotNull(result);
     }
 
     /**
