@@ -8,6 +8,12 @@ public class Tilfredshed implements TilfredshedInterface {
 
     @Override
     public void udregnTilfredshed(Collection<IElev> elever, Collection<Fag> poolA, Collection<Fag> poolB) {
+        for(Fag f : poolA){
+            System.out.println("A " + f.getName());
+        }
+        for(Fag f1 : poolB){
+            System.out.println("B " + f1.getName());
+        }
         int poolAFag[] = new int[4];
         int poolBFag[] = new int[4];
         int rank = 0;
@@ -20,28 +26,26 @@ public class Tilfredshed implements TilfredshedInterface {
 
             for (Fag f : poolA) {
                 if (e.getForstePrio1().getName().equals(f.getName())) {
-                    poolAFag[0] += 1;
-                    System.out.println("Plads 0 A");
+                    poolAFag[0] = 1;
                 } else if (e.getForstePrio2().getName().equals(f.getName())) {
-                    poolAFag[1] += 1;
-                    System.out.println("Plads 1 A");
+                    poolAFag[1] = 1;
                 } else if (e.getAndenPrio1().getName().equals(f.getName())) {
-                    poolAFag[2] += 1;
+                    poolAFag[2] = 1;
                 } else if (e.getAndenPrio2().getName().equals(f.getName())) {
-                    poolAFag[3] += 1;
+                    poolAFag[3] = 1;
 
                 }
             }
 
             for (Fag f : poolB) {
                 if (e.getForstePrio1().getName().equals(f.getName())) {
-                    poolBFag[0] += 1;
+                    poolBFag[0] = 1;
                 } else if (e.getForstePrio2().getName().equals(f.getName())) {
-                    poolBFag[1] += 1;
+                    poolBFag[1] = 1;
                 } else if (e.getAndenPrio1().getName().equals(f.getName())) {
-                    poolBFag[2] += 1;
+                    poolBFag[2] = 1;
                 } else if (e.getAndenPrio2().getName().equals(f.getName())) {
-                    poolBFag[3] += 1;
+                    poolBFag[3] = 1;
 
                 }
             }

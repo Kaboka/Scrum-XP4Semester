@@ -17,16 +17,16 @@ import java.util.Collections;
  */
 public class SortingThing {
     
-    public static ArrayList<Elev> sort(ArrayList<Elev> students){
+    public static ArrayList<IElev> sort(ArrayList<IElev> students){
         
-        ArrayList<Elev> temp1 = new ArrayList<>();
-        ArrayList<Elev> temp2 = new ArrayList<>();
-        ArrayList<Elev> temp3 = new ArrayList<>();
-        ArrayList<Elev> temp4 = new ArrayList<>();
-        ArrayList<Elev> tempResult = new ArrayList<>();
+        ArrayList<IElev> temp1 = new ArrayList<>();
+        ArrayList<IElev> temp2 = new ArrayList<>();
+        ArrayList<IElev> temp3 = new ArrayList<>();
+        ArrayList<IElev> temp4 = new ArrayList<>();
+        ArrayList<IElev> tempResult = new ArrayList<>();
         
         
-        for(Elev student : students){
+        for(IElev student : students){
             int rank = student.getTilfredshed(); 
             if(rank == 1){
                 temp1.add(student);

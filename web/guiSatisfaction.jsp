@@ -23,7 +23,7 @@
 
                 $("#addA").click(function() {
                     if ($("#eSubjects").val() != null) {
-                        $("#poolAList").append(new Option($("#eSubjects").val(), $("#eSubjects").val()));
+                        $("#poolAList").append(new Option($("#eSubjects option:selected").text(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
                         makeArray();
                         getStudents();
@@ -31,7 +31,7 @@
                 });
                 $("#addB").click(function() {
                     if ($("#eSubjects").val() != null) {
-                        $("#poolBList").append(new Option($("#eSubjects").val(), $("#eSubjects").val()));
+                        $("#poolBList").append(new Option($("#eSubjects option:selected").text(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
                         makeArray();
                         getStudents();
@@ -39,7 +39,7 @@
                 });
                 $("#removeA").click(function() {
                     if ($("#poolAList").val() != null) {
-                        $("#eSubjects").append(new Option($("#poolAList").val(), $("#poolAList").val()));
+                        $("#eSubjects").append(new Option($("#poolAList option:selected").text(), $("#poolAList").val()));
                         $("#poolAList option[value='" + $("#poolAList").val() + "']").remove();
                         makeArray();
                         getStudents();
@@ -47,7 +47,7 @@
                 });
                 $("#removeB").click(function() {
                     if ($("#poolBList").val() != null) {
-                        $("#eSubjects").append(new Option($("#poolBList").val(), $("#poolBList").val()));
+                        $("#eSubjects").append(new Option($("#poolBList option:selected").text(), $("#poolBList").val()));
                         $("#poolBList option[value='" + $("#poolBList").val() + "']").remove();
                         makeArray();
                         getStudents();
@@ -61,6 +61,9 @@
 
                 function makeArray()
                 {
+                    poolA = new Array;
+                    poolB = new Array;
+                    
                     var count = 0;
                     $("#poolAList > option").each(function() {
                         poolA[count] = $(this).val();
@@ -157,27 +160,27 @@
 
                         //Numbers
                         $("#poolAList > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).val() || obj.forstePrio2.name === $(this).val()) {
+                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).val() || obj.andenPrio2.name === $(this).val()) {
+                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td>0</td>");
                             }
                         });
                         $("#poolBList > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).val() || obj.forstePrio2.name === $(this).val()) {
+                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).val() || obj.andenPrio2.name === $(this).val()) {
+                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td>0</td>");
                             }
                         });
                         $("#eSubjects > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).val() || obj.forstePrio2.name === $(this).val()) {
+                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).val() || obj.andenPrio2.name === $(this).val()) {
+                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td>0</td>");
@@ -246,12 +249,12 @@
                 <form method="POST" action="example.cgi">
                     <select id="eSubjects" name="eSubjects" size="15">
                         <option value="C#">C#</option>
-                        <option value="Apps and innovation">Apps and innovation</option>
+                        <option value="Apps_and_innovation">Apps and innovation</option>
                         <option value="HCI">HCI</option>
                         <option value="Globalization">Globalization</option>
                         <option value="Databases">Databases</option>
                         <option value="Test">Test</option>
-                        <option value="Project management">Project management</option>
+                        <option value="Project_management">Project management</option>
                         <option value="Algorithms">Algorithms</option>
                     </select>
                 </form>
