@@ -4,8 +4,6 @@
  */
 package RESTClient;
 
-import com.google.gson.Gson;
-import com.sun.jersey.api.client.ClientResponse;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
