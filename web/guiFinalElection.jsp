@@ -20,6 +20,25 @@
             $(function() {
                 var fPrio = new Array();
                 var sPrio = new Array();
+                
+                $.ajax({url: "AjaxServlet?command=getPools",
+                    cache: false,
+                    dataType: "json",
+                    success: genPools
+                });
+                
+                function genPools(data){
+                    var ArrayPoolA = new Array();
+                    var ArrayPoolB = new Array();
+                    ArrayPoolA.add(data.get(0));
+                    ArrayPoolB.add(data.get(1));
+                    $.each(ArrayPoolA, function(i, obj){
+                        $("#eSubjectsPoolA").append("<option value='"+obj.toString()+"'>"+obj.toString+"</option>");
+                    });
+                    $.each(ArrayPoolB, function(i, obj){
+                        $("#eSubjectsPoolB").append("<option value='"+obj.toString()+"'>"+obj.toString+"</option>");
+                    });
+                }
 
                 $("#addA1").click(function() {
                     if ($("#eSubjectsPoolA").val() != null && $("#poolA1List option").length < 1) {
@@ -161,15 +180,7 @@
                 
                 <h4>Pool A</h4>
                 <form method="POST" action="example.cgi">
-                    <select id="eSubjectsPoolA" class="ePools"name="eSubjects" size="15">
-                        <option value="C#">C#</option>
-                        <option value="Apps and innovation">Apps and innovation</option>
-                        <option value="HCI">HCI</option>
-                        <option value="Globalization">Globalization</option>
-                        <option value="Databases">Databases</option>
-                        <option value="Test">Test</option>
-                        <option value="Project management">Project management</option>
-                        <option value="Algorithms">Algorithms</option>
+                    <select id="eSubjectsPoolA" class="ePools" name="eSubjects" size="15">
                     </select>
                 </form>
             </div>
@@ -217,14 +228,6 @@
                 <h4>Pool B</h4>
                 <form method="POST" action="example.cgi">
                     <select id="eSubjectsPoolB" class="ePools" name="PoolB" size="15">
-                        <option value="C#">C#</option>
-                        <option value="Apps and innovation">Apps and innovation</option>
-                        <option value="HCI">HCI</option>
-                        <option value="Globalization">Globalization</option>
-                        <option value="Databases">Databases</option>
-                        <option value="Test">Test</option>
-                        <option value="Project management">Project management</option>
-                        <option value="Algorithms">Algorithms</option>
                     </select>
                 </form>
             </div>
