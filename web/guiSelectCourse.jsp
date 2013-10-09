@@ -124,14 +124,6 @@
                 <h4>Subjects</h4>
 
                 <select id="eSubjects" name="eSubjects" size="15">
-                    <option value="C#">C#</option>
-                    <option value="Apps and innovation">Apps and innovation</option>
-                    <option value="HCI">HCI</option>
-                    <option value="Globalization">Globalization</option>
-                    <option value="Databases">Databases</option>
-                    <option value="Test">Test</option>
-                    <option value="Apps and innovation">Project management</option>
-                    <option value="Algorithms">Algorithms</option>
                 </select>
 
             </div>
