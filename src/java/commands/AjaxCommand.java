@@ -11,5 +11,5 @@ import javax.servlet.http.HttpServletRequest;
  * @author Nicklas Hemmingsen
  */
 public interface AjaxCommand {
-    String execute(HttpServletRequest request) throws Exception;
+    void execute(HttpServletRequest request) throws Exception;
 }

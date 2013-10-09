@@ -48,7 +48,7 @@ public class Utilities {
         return tempResult;
     }
 
-    static Collection<Fag> convertToFag(String string) throws IllegalArgumentException {
+    public static Collection<Fag> convertToFag(String string) throws IllegalArgumentException {
         Collection<Fag> fagListe = new ArrayList<>();
 
         if (!string.isEmpty()) {

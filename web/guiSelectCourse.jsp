@@ -92,7 +92,7 @@
                     if ($("#fPrioList option").length != 0 & $("#sPrioList option").length != 0) {
                         var json = JSON.stringify(fPrio);
                         var json2 = JSON.stringify(sPrio);
-                        $.ajax({url: "AjaxServlet?id=" + $("#studentID").val(),
+                        $.ajax({url: "AjaxServlet?command=persist&id=" + $("#studentID").val(),
                             cache: false,
                             dataType: "json",
                             data: {fPrio: json, sPrio: json2},
