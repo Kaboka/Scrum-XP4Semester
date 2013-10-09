@@ -4,31 +4,31 @@
  */
 package interfaces;
 
-import classes.Fag;
+import classes.Course;
 
 public interface IStudent {
 
-    Fag getForstePrio1();
+    Course getFirstPrio1();
 
-    void setForstePrio1(Fag forstePrio1);
+    void setFirstPrio1(Course forstePrio1);
 
-    Fag getForstePrio2();
+    Course getFirstPrio2();
 
-    void setForstePrio2(Fag forstePrio2);
+    void setFirstPrio2(Course forstePrio2);
 
-    Fag getAndenPrio1();
+    Course getSecondPrio1();
 
-    void setAndenPrio1(Fag andenPrio1);
+    void setSecondPrio1(Course andenPrio1);
 
-    Fag getAndenPrio2();
+    Course getSecondPrio2();
 
-    void setAndenPrio2(Fag andenPrio2);
+    void setSecondPrio2(Course andenPrio2);
 
     String getName();
 
     void setName(String name);
     
-    void setTilfredshed(int til);
+    void setSatifaction(int til);
     
-    int getTilfredshed(); 
+    int getSatifaction(); 
 }

@@ -4,7 +4,7 @@
  */
 package Utility;
 
-import classes.Fag;
+import classes.Course;
 import interfaces.IStudent;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +25,7 @@ public class Utilities {
 
         if (!students.isEmpty()) {
             for (IStudent student : students) {
-                int rank = student.getTilfredshed();
+                int rank = student.getSatifaction();
                 if (rank == 1) {
                     temp1.add(student);
                 } else if (rank == 2) {
@@ -48,84 +48,81 @@ public class Utilities {
         return tempResult;
     }
 
-    static Collection<Fag> convertToFag(String string) throws IllegalArgumentException {
-        Collection<Fag> fagListe = new ArrayList<>();
+    public static Collection<Course> convertToCourse(String string) throws IllegalArgumentException {
+        Collection<Course> courseList = new ArrayList<>();
 
         if (!string.isEmpty()) {
             string = string.replaceAll("\"", "");
             string = string.substring(1, string.length() - 1);
 
-            String[] fagArray = string.split(",");
+            String[] courseArray = string.split(",");
 
-            for (int i = 0; i < fagArray.length; i++) {
-                Fag fag = new Fag(fagArray[i]);
-                fagListe.add(fag);
-                System.out.println("Fag nr:" + i + ", navn: " + fag.getName());
+            for (int i = 0; i < courseArray.length; i++) {
+                Course course = new Course(courseArray[i]);
+                courseList.add(course);
             }
         } else {
-            throw new IllegalArgumentException("Utilities.convetToFag - This is empty");
+            throw new IllegalArgumentException("Utilities.convetToCourse - This is empty");
         }
-        return fagListe;
+        return courseList;
     }
     
-    public static void udregnTilfredshed(Collection<IStudent> elever, Collection<Fag> poolA, Collection<Fag> poolB) {
-        int poolAFag[] = new int[4];
-        int poolBFag[] = new int[4];
+    public static void calculateSatifaction(Collection<IStudent> students, Collection<Course> poolA, Collection<Course> poolB) {
+        int poolACourse[] = new int[4];
+        int poolBCourse[] = new int[4];
 
-        if (!elever.isEmpty() || !poolA.isEmpty() || !poolB.isEmpty()) {
-            for (IStudent e : elever) {
-                poolAFag = new int[4];
-                poolBFag = new int[4];
+        if (!students.isEmpty() || !poolA.isEmpty() || !poolB.isEmpty()) {
+            for (IStudent e : students) {
+                poolACourse = new int[4];
+                poolBCourse = new int[4];
 
-                for (Fag f : poolA) {
-                    if (e.getForstePrio1().getName().equals(f.getName())) {
-                        poolAFag[0] += 1;
-                        System.out.println("Plads 0 A");
-                    } else if (e.getForstePrio2().getName().equals(f.getName())) {
-                        poolAFag[1] += 1;
-                        System.out.println("Plads 1 A");
-                    } else if (e.getAndenPrio1().getName().equals(f.getName())) {
-                        poolAFag[2] += 1;
-                    } else if (e.getAndenPrio2().getName().equals(f.getName())) {
-                        poolAFag[3] += 1;
+                for (Course f : poolA) {
+                    if (e.getFirstPrio1().getName().equals(f.getName())) {
+                        poolACourse[0] += 1;
+                    } else if (e.getFirstPrio2().getName().equals(f.getName())) {
+                        poolACourse[1] += 1;
+                    } else if (e.getSecondPrio1().getName().equals(f.getName())) {
+                        poolACourse[2] += 1;
+                    } else if (e.getSecondPrio2().getName().equals(f.getName())) {
+                        poolACourse[3] += 1;
                     }
                 }
 
-                for (Fag f : poolB) {
-                    if (e.getForstePrio1().getName().equals(f.getName())) {
-                        poolBFag[0] += 1;
-                    } else if (e.getForstePrio2().getName().equals(f.getName())) {
-                        poolBFag[1] += 1;
-                    } else if (e.getAndenPrio1().getName().equals(f.getName())) {
-                        poolBFag[2] += 1;
-                    } else if (e.getAndenPrio2().getName().equals(f.getName())) {
-                        poolBFag[3] += 1;
+                for (Course f : poolB) {
+                    if (e.getFirstPrio1().getName().equals(f.getName())) {
+                        poolBCourse[0] += 1;
+                    } else if (e.getFirstPrio2().getName().equals(f.getName())) {
+                        poolBCourse[1] += 1;
+                    } else if (e.getSecondPrio1().getName().equals(f.getName())) {
+                        poolBCourse[2] += 1;
+                    } else if (e.getSecondPrio2().getName().equals(f.getName())) {
+                        poolBCourse[3] += 1;
                     }
                 }
 
-                if (poolAFag[0] == 1 || poolAFag[1] == 1) {
-                    if (poolBFag[0] == 1 || poolBFag[1] == 1) {
+                if (poolACourse[0] == 1 || poolACourse[1] == 1) {
+                    if (poolBCourse[0] == 1 || poolBCourse[1] == 1) {
 
-                        e.setTilfredshed(4);
-                    } else if (poolBFag[2] == 1 || poolBFag[3] == 1) {
-                        e.setTilfredshed(3);
+                        e.setSatifaction(4);
+                    } else if (poolBCourse[2] == 1 || poolBCourse[3] == 1) {
+                        e.setSatifaction(3);
                     } else {
-                        e.setTilfredshed(1);
+                        e.setSatifaction(1);
                     }
-                } else if (poolAFag[2] == 1 || poolAFag[3] == 1) {
-                    if (poolBFag[0] == 1 || poolBFag[1] == 1) {
-                        e.setTilfredshed(3);
-                    } else if (poolBFag[2] == 1 || poolBFag[3] == 1) {
-                        e.setTilfredshed(2);
+                } else if (poolACourse[2] == 1 || poolACourse[3] == 1) {
+                    if (poolBCourse[0] == 1 || poolBCourse[1] == 1) {
+                        e.setSatifaction(3);
+                    } else if (poolBCourse[2] == 1 || poolBCourse[3] == 1) {
+                        e.setSatifaction(2);
                     } else {
-                        e.setTilfredshed(1);
+                        e.setSatifaction(1);
                     }
                 } else {
-                    e.setTilfredshed(1);
+                    e.setSatifaction(1);
                 }
             }
         }else{
-            throw new IllegalArgumentException("Utilities.udregnTilfredshed - A argument is empty");
+            throw new IllegalArgumentException("Utilities.calculateSatifaction - A argument is empty");
         }
     }
 }

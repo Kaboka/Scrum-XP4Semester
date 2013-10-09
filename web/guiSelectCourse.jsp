@@ -109,7 +109,7 @@
                 <label for="studentID">Student ID</label>
                 <input type="text" id="studentID" placeholder="Fronter username"/>
                 <h4>Subjects</h4>
-                <form method="POST" action="example.cgi">
+                
                     <select id="eSubjects" name="eSubjects" size="15">
                         <option value="C#">C#</option>
                         <option value="Apps and innovation">Apps and innovation</option>
@@ -120,7 +120,7 @@
                         <option value="Apps and innovation">Project management</option>
                         <option value="Algorithms">Algorithms</option>
                     </select>
-                </form>
+          
             </div>
 
             <div class="chooseButton">
@@ -144,18 +144,18 @@
             <div class="choosenSubjects">
                 <div class="subjects" id="PoolA">
                     <h4>First priority</h4>
-                    <form method="POST" >
-                        <select id="fPrioList" name="color5" size="2" >
+                 
+                        <select id="fPrioList"  size="2" >
                         </select>
-                    </form>
+                   
                 </div>
 
                 <div class="subjects" id="PoolB" >
                     <h4>Second priority</h4>
-                    <form method="POST">
-                        <select id="sPrioList" name="color5" size="2" >                      
+                
+                        <select id="sPrioList"  size="2" >                      
                         </select>
-                    </form>
+                    
                 </div>
             </div>
             <div style="clear:both;">
