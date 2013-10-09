@@ -49,7 +49,7 @@ public class TilfredshedTest {
     @Test
     public void testSomeMethod() {
         Mockery context = new JUnit4Mockery();
-        final IElev per = context.mock(IElev.class);
+        final Elev per = context.mock(Elev.class);
 
         context.checking(new Expectations(){{
             oneOf(per).setForstePrio1(new Fag("cPlus"));

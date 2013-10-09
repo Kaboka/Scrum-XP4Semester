@@ -10,10 +10,16 @@ public class Elev implements IElev{
     Fag andenPrio2;
     String name;
     int tilfredshed;
+
+    public Elev(String name, Fag forstePrio1, Fag forstePrio2, Fag andenPrio1, Fag andenPrio2) {
+        this.forstePrio1 = forstePrio1;
+        this.forstePrio2 = forstePrio2;
+        this.andenPrio1 = andenPrio1;
+        this.andenPrio2 = andenPrio2;
+        this.name = name;
+        this.tilfredshed = 1;
+    }
     
-    public Elev(String name){
-        this.name = name;       
-    };
 
     @Override
     public Fag getForstePrio1() {
