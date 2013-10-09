@@ -16,6 +16,7 @@
             $(function() {
                 var poolA = new Array();
                 var poolB = new Array();
+                var subjects = new Array();
 
                 $.ajax({url: "AjaxServlet?command=courses",
                     cache: false,
@@ -71,6 +72,7 @@
                 {
                     poolA = new Array;
                     poolB = new Array;
+                    subjects = new Array;
 
                     var count = 0;
                     $("#poolAList > option").each(function() {
@@ -81,6 +83,11 @@
                     count = 0;
                     $("#poolBList > option").each(function() {
                         poolB[count] = $(this).val();
+                        count++;
+                    });
+                    count = 0;
+                    $("#eSubjects > option").each(function() {
+                        subjects[count] = $(this).val();
                         count++;
                     });
                 }
@@ -200,10 +207,11 @@
                 $("#save").click(function() {
                     var json = JSON.stringify(poolA);
                     var json2 = JSON.stringify(poolB);
+                    var json3 = JSON.stringify(subjects);
                     $.ajax({url: "AjaxServlet?command=persistPools",
                         cache: false,
                         dataType: "json",
-                        data: {poolA: json, poolB: json2},
+                        data: {poolA: json, poolB: json2, subjects: json3},
                         succes: $("#save").prop('disabled', true)
                     });
                 });
@@ -257,7 +265,7 @@
             </div>
             <div style="clear:both;"></div>
             <div class="saveButton" >
-                <button id="Save" type="button">Save</button>
+                <button id="save" type="button">Save</button>
             </div>
 
             <div class ="tabelOverView" >
