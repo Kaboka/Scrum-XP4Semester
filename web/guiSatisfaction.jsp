@@ -31,7 +31,7 @@
                 }
 
                 $("#addA").click(function() {
-                    if ($("#eSubjects").val() != null) {
+                    if ($("#eSubjects").val() !== null) {
                         $("#poolAList").append(new Option($("#eSubjects option:selected").text(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
                         makeArray();
@@ -39,7 +39,7 @@
                     }
                 });
                 $("#addB").click(function() {
-                    if ($("#eSubjects").val() != null) {
+                    if ($("#eSubjects").val() !== null) {
                         $("#poolBList").append(new Option($("#eSubjects option:selected").text(), $("#eSubjects").val()));
                         $("#eSubjects option[value='" + $("#eSubjects").val() + "']").remove();
                         makeArray();
@@ -47,7 +47,7 @@
                     }
                 });
                 $("#removeA").click(function() {
-                    if ($("#poolAList").val() != null) {
+                    if ($("#poolAList").val() !== null) {
                         $("#eSubjects").append(new Option($("#poolAList option:selected").text(), $("#poolAList").val()));
                         $("#poolAList option[value='" + $("#poolAList").val() + "']").remove();
                         makeArray();
@@ -55,7 +55,7 @@
                     }
                 });
                 $("#removeB").click(function() {
-                    if ($("#poolBList").val() != null) {
+                    if ($("#poolBList").val() !== null) {
                         $("#eSubjects").append(new Option($("#poolBList option:selected").text(), $("#poolBList").val()));
                         $("#poolBList option[value='" + $("#poolBList").val() + "']").remove();
                         makeArray();
@@ -85,6 +85,7 @@
                         poolB[count] = $(this).val();
                         count++;
                     });
+                    
                     count = 0;
                     $("#eSubjects > option").each(function() {
                         subjects[count] = $(this).val();
@@ -95,18 +96,18 @@
                 function generateURL() {
                     var result = "AjaxServlet?";
                     var count = 1;
-                    var poolA = "poolACourse"
-                    var poolB = "poolBCourse"
+                    var poolA = "poolACourse";
+                    var poolB = "poolBCourse";
                     $("#poolAList > option").each(function() {
                         if (count === 1)
                         {
-                            poolA = "poolACourse"
-                            poolA += count
+                            poolA = "poolACourse";
+                            poolA += count;
                             count++;
                             result += poolA + "=" + $(this).val();
                         } else {
-                            poolA = "poolACourse"
-                            poolA += count
+                            poolA = "poolACourse";
+                            poolA += count;
                             count++;
                             result += "&" + poolA + "=" + $(this).val();
                         }
@@ -114,8 +115,8 @@
 
                     count = 1;
                     $("#poolBList > option").each(function() {
-                        poolB = "poolBCourse"
-                        poolB += count
+                        poolB = "poolBCourse";
+                        poolB += count;
                         count++;
                         result += "&" + poolB + "=" + $(this).val();
                     });
@@ -123,7 +124,7 @@
                 }
 
                 function getStudents() {
-                    if ($("#poolAList option").length != 0 & $("#poolBList option").length != 0) {
+                    if ($("#poolAList option").length !== 0 & $("#poolBList option").length !== 0) {
                         //   var url = generateURL();
                         var json = JSON.stringify(poolA);
                         var json2 = JSON.stringify(poolB);
@@ -205,16 +206,21 @@
                 }
 
                 $("#save").click(function() {
-                    var json = JSON.stringify(poolA);
-                    var json2 = JSON.stringify(poolB);
-                    var json3 = JSON.stringify(subjects);
-                    $.ajax({url: "AjaxServlet?command=persistPools",
-                        cache: false,
-                        dataType: "json",
-                        data: {poolA: json, poolB: json2, subjects: json3},
-                        succes: $("#save").prop('disabled', true)
-                    });
+                    if ($("#poolAList option").length !== 0 & $("#poolBList option").length !== 0) {
+                        var json = JSON.stringify(poolA);
+                        var json2 = JSON.stringify(poolB);
+                        var json3;
+                        if(subjects.length !== 0){
+                            json3 = JSON.stringify(subjects);
+                        }
+                        $.ajax({url: "AjaxServlet?command=persistPools",
+                            cache: false,
+                            dataType: "json",
+                            data: {poolA: json, poolB: json2, subjects: json3}
+                        });
+                    }
                 });
+
             });
         </script>
     </head>
