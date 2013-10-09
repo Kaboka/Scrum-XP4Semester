@@ -31,7 +31,7 @@ import com.sun.jersey.api.client.WebResource;
 public class CourseClient {
     private WebResource webResource;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/WEB-INF/webresources";
+    private static final String BASE_URI = "http://localhost:8080/Scrum-XP4Semester-Backend/webresources";
 
     public CourseClient() {
         com.sun.jersey.api.client.config.ClientConfig config = new com.sun.jersey.api.client.config.DefaultClientConfig();

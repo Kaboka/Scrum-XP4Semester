@@ -17,6 +17,18 @@
                 var poolA = new Array();
                 var poolB = new Array();
 
+                $.ajax({url: "AjaxServlet?command=courses",
+                    cache: false,
+                    dataType: "json",
+                    success: genSubjects
+                });
+
+                function genSubjects(data) {
+                    $.each(data, function(i, obj) {
+                        $("#eSubjects").append("<option value='" + obj.toString() + "'>" + obj.toString() + "</option>");
+                    });
+                }
+
                 $("#addA").click(function() {
                     if ($("#eSubjects").val() != null) {
                         $("#poolAList").append(new Option($("#eSubjects option:selected").text(), $("#eSubjects").val()));
@@ -59,7 +71,7 @@
                 {
                     poolA = new Array;
                     poolB = new Array;
-                    
+
                     var count = 0;
                     $("#poolAList > option").each(function() {
                         poolA[count] = $(this).val();
@@ -108,7 +120,7 @@
                         //   var url = generateURL();
                         var json = JSON.stringify(poolA);
                         var json2 = JSON.stringify(poolB);
-                        $.ajax({url: "AjaxServlet",
+                        $.ajax({url: "AjaxServlet?command=getStudents",
                             cache: false,
                             dataType: "json",
                             data: {poolA: json, poolB: json2},
@@ -141,42 +153,42 @@
                     $.each(data, function(i, obj) {
 
                         //Color
-                        if (obj.tilfredshed === 1) {
+                        if (obj.satifaction === 1) {
                             $("#overview").append("<tr class='remove'><td style='background-color: red;'>" + obj.name + "</td>");
                         }
-                        if (obj.tilfredshed === 2) {
+                        if (obj.satifaction === 2) {
                             $("#overview").append("<tr class='remove'><td style='background-color: orange;'>" + obj.name + "</td>");
                         }
-                        if (obj.tilfredshed === 3) {
+                        if (obj.satifaction === 3) {
                             $("#overview").append("<tr class='remove'><td style='background-color: yellow;'>" + obj.name + "</td>");
                         }
-                        if (obj.tilfredshed === 4) {
+                        if (obj.satifaction === 4) {
                             $("#overview").append("<tr class='remove'><td style='background-color: green;'>" + obj.name + "</td>");
                         }
 
                         //Numbers
                         $("#poolAList > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
+                            if (obj.firstPrio1.name === $(this).text() || obj.firstPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
+                            } else if (obj.secondPrio1.name === $(this).text() || obj.secondPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
                             }
                         });
                         $("#poolBList > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
+                            if (obj.firstPrio1.name === $(this).text() || obj.firstPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
+                            } else if (obj.secondPrio1.name === $(this).text() || obj.secondPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
                             }
                         });
                         $("#eSubjects > option").each(function() {
-                            if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
+                            if (obj.firstPrio1.name === $(this).text() || obj.firstPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
-                            } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
+                            } else if (obj.secondPrio1.name === $(this).text() || obj.secondPrio2.name === $(this).text()) {
                                 $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
                                 $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
@@ -191,18 +203,8 @@
         <div id="frame" >
             <div class="subjects" id="electiveSubjects">
                 <h4>Subjects</h4>
-               
-                    <select id="eSubjects" name="eSubjects" size="15">
-                        <option value="C#">C#</option>
-                        <option value="Apps_and_innovation">Apps and innovation</option>
-                        <option value="HCI">HCI</option>
-                        <option value="Globalization">Globalization</option>
-                        <option value="Databases">Databases</option>
-                        <option value="Test">Test</option>
-                        <option value="Project_management">Project management</option>
-                        <option value="Algorithms">Algorithms</option>
-                    </select>
-             
+                <select id="eSubjects" name="eSubjects" size="15">
+                </select>
             </div>
 
             <div class="chooseButton">
@@ -228,23 +230,21 @@
             <div class="choosenSubjects">
                 <div class="subjects" id="PoolA">
                     <h4>Pool A</h4>
-                
-                        <select id="poolAList" size="2" >
-                        </select>
-              
+
+                    <select id="poolAList" size="2" >
+                    </select>
+
                 </div>
 
                 <div class="subjects" id="PoolB" >
                     <h4>Pool B</h4>
-                
-                        <select id="poolBList"  size="2" >                      
-                        </select>
-                 
+
+                    <select id="poolBList"  size="2" >                      
+                    </select>
+
                 </div>
             </div>
             <div style="clear:both;"></div>
-
-
             <div class="saveButton" >
                 <button id="Save" type="button">Save</button>
             </div>

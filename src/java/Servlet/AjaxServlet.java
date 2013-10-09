@@ -35,8 +35,6 @@ public class AjaxServlet extends HttpServlet {
        
          AjaxCommand command =  factory.findAjaxCommand(req.getParameter("command"));
         try {
-           String res = command.execute(req);
-            System.out.println("Json data " + res);
            out.print(command.execute(req));
         } catch (Exception ex) {
             Logger.getLogger(AjaxServlet.class.getName()).log(Level.SEVERE, null, ex);

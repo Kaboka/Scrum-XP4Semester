@@ -17,6 +17,19 @@
                 var fPrio = new Array();
                 var sPrio = new Array();
 
+                $.ajax({url: "AjaxServlet?command=courses",
+                    cache: false,
+                    dataType: "json",
+                    success: genSubjects
+                });
+
+                function genSubjects(data) {
+                    $.each(data, function(i, obj) {
+                        $("#eSubjects").append("<option value='" + obj.toString() + "'>" + obj.toString() + "</option>");
+                    });
+                }
+
+
                 $("#addFPrio").click(function() {
                     if ($("#eSubjects").val() != null && $("#fPrioList option").length < 2) {
                         $("#fPrioList").append(new Option($("#eSubjects").val(), $("#eSubjects").val()));
@@ -74,7 +87,7 @@
                 {
                     fPrio = new Array();
                     sPrio = new Array();
-                    
+
                     var count = 0;
                     $("#fPrioList > option").each(function() {
                         fPrio[count] = $(this).val();
@@ -109,18 +122,18 @@
                 <label for="studentID">Student ID</label>
                 <input type="text" id="studentID" placeholder="Fronter username"/>
                 <h4>Subjects</h4>
-                
-                    <select id="eSubjects" name="eSubjects" size="15">
-                        <option value="C#">C#</option>
-                        <option value="Apps and innovation">Apps and innovation</option>
-                        <option value="HCI">HCI</option>
-                        <option value="Globalization">Globalization</option>
-                        <option value="Databases">Databases</option>
-                        <option value="Test">Test</option>
-                        <option value="Apps and innovation">Project management</option>
-                        <option value="Algorithms">Algorithms</option>
-                    </select>
-          
+
+                <select id="eSubjects" name="eSubjects" size="15">
+                    <option value="C#">C#</option>
+                    <option value="Apps and innovation">Apps and innovation</option>
+                    <option value="HCI">HCI</option>
+                    <option value="Globalization">Globalization</option>
+                    <option value="Databases">Databases</option>
+                    <option value="Test">Test</option>
+                    <option value="Apps and innovation">Project management</option>
+                    <option value="Algorithms">Algorithms</option>
+                </select>
+
             </div>
 
             <div class="chooseButton">
@@ -144,18 +157,18 @@
             <div class="choosenSubjects">
                 <div class="subjects" id="PoolA">
                     <h4>First priority</h4>
-                 
-                        <select id="fPrioList"  size="2" >
-                        </select>
-                   
+
+                    <select id="fPrioList"  size="2" >
+                    </select>
+
                 </div>
 
                 <div class="subjects" id="PoolB" >
                     <h4>Second priority</h4>
-                
-                        <select id="sPrioList"  size="2" >                      
-                        </select>
-                    
+
+                    <select id="sPrioList"  size="2" >                      
+                    </select>
+
                 </div>
             </div>
             <div style="clear:both;">

@@ -36,10 +36,7 @@ public class Student implements IStudent{
         return firstPrio2;
     }
 
-    /**
-     *
-     * @param forstePrio2
-     */
+ 
     @Override
     public void setFirstPrio2(Course forstePrio2) {
         this.firstPrio2 = forstePrio2;
@@ -75,10 +72,6 @@ public class Student implements IStudent{
         this.name = name;
     }
     
-    /**
-     *
-     * @param newSatifaction
-     */
     @Override
     public void setSatifaction(int newSatifaction){
         satifaction = newSatifaction;

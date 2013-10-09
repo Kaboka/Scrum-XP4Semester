@@ -69,8 +69,7 @@ public class StudentCommand implements AjaxCommand {
         Utilities.calculateSatifaction(students, poolA, poolB);
         poolA = null;
         poolB = null;
-
-
+        
         Gson json = new Gson();
         return json.toJson(Utilities.sort(students));
     }

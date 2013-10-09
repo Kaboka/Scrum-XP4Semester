@@ -130,14 +130,7 @@
                         sPrio[1] = $(this).val();
                         
                         
-                    });
-
-                   
-                
-
-                 
-                      
-                       
+                    }); 
                 }
 
                 function saveStudentChoices() {
