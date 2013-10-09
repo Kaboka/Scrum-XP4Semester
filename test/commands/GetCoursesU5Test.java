@@ -48,13 +48,13 @@ public class GetCoursesU5Test {
     }
 
     /**
-     * Test of execute method, of class GetCoursesU5.
+     * Test of execute method, of class GetCoursesU5Command.
      */
     @Test
     public void testExecute() throws Exception {
         System.out.println("execute");
         HttpServletRequest request = null;
-        GetCoursesU5 instance = new GetCoursesU5();
+        GetCoursesU5Command instance = new GetCoursesU5Command();
         String expResult = "";
         String result = instance.execute(request);
         assertEquals(expResult, result);

@@ -7,7 +7,7 @@ package view;
 import commands.AjaxCommand;
 import commands.Command;
 import commands.GetCoursesCommand;
-import commands.GetCoursesU5;
+import commands.GetCoursesU5Command;
 import commands.PersistCommand;
 import commands.PersistPoolsCommand;
 import commands.StudentCommand;
@@ -28,8 +28,8 @@ public class Factory {
         ajaxCommands.put("persist", new PersistCommand());
         ajaxCommands.put("getStudents", new StudentCommand());
         ajaxCommands.put("courses", new GetCoursesCommand());
-        ajaxCommands.put("getPools", new GetCoursesU5());
-
+        ajaxCommands.put("getPools", new GetCoursesU5Command());
+        ajaxCommands.put("persistPools", new PersistPoolsCommand());
         
         
     }

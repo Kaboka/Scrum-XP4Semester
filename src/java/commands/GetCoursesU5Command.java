@@ -16,7 +16,7 @@ import org.codehaus.jettison.json.JSONObject;
  *
  * @author Nicklas Hemmingsen
  */
-public class GetCoursesU5 implements AjaxCommand{
+public class GetCoursesU5Command implements AjaxCommand{
 
     @Override
     public String execute(HttpServletRequest request) throws Exception {
@@ -25,7 +25,7 @@ public class GetCoursesU5 implements AjaxCommand{
         ArrayList<Course> names = new ArrayList<>();
         ArrayList<String> poolA = new ArrayList<>();
         ArrayList<String> poolB = new ArrayList<>();
-        ArrayList<ArrayList<String>> bothPools = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> bothPools = new ArrayList<>();
         
         JSONArray courses = cC.findAll_JSON(JSONArray.class);
         for(int i = 0; i < courses.length(); i++){
@@ -46,6 +46,7 @@ public class GetCoursesU5 implements AjaxCommand{
         bothPools.add(poolA);
         bothPools.add(poolB);
         String str = json.toJson(bothPools);
+        System.out.println(str);
         
         return str;
     }
