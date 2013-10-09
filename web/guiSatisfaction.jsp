@@ -196,6 +196,17 @@
                         });
                     });
                 }
+
+                $("#save").click(function() {
+                    var json = JSON.stringify(poolA);
+                    var json2 = JSON.stringify(poolB);
+                    $.ajax({url: "AjaxServlet?command=persistPools",
+                        cache: false,
+                        dataType: "json",
+                        data: {poolA: json, poolB: json2},
+                        succes: $("#save").prop('disabled', true)
+                    });
+                });
             });
         </script>
     </head>
