@@ -6,6 +6,9 @@ package view;
 
 import commands.AjaxCommand;
 import commands.Command;
+import commands.GetCoursesCommand;
+import commands.PersistCommand;
+import commands.StudentCommand;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +23,10 @@ public class Factory {
     private Factory(){
         commands = new HashMap<String, Command>();
         ajaxCommands = new HashMap<String, AjaxCommand>();
+        ajaxCommands.put("persist", new PersistCommand());
+        ajaxCommands.put("getStudents", new StudentCommand());
+        ajaxCommands.put("courses", new GetCoursesCommand());
+
         
         
     }

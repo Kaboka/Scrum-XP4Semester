@@ -33,18 +33,27 @@ root {
     margin-bottom: 70px;
 }
 table.tabelOverView {
-    border:1px solid green;
-    width: 680px;
+    
+    width:100%;
 }
+
 th.tabelOverView{
     background-color: greenyellow;
 }
+tr.tabelOverView{
+}
+td.tabelOverView{
+    min-width: 10px;
+    /*width: 200;*/
+    border-right-width:5px;	
+    border-right:1px solid greenyellow;
+}
 div.tabelOverView{
     margin-top: 25px;
-    width: 700px;
+    width:800px;
     float: left;
-    
-    margin-left: 50px;
+    overflow-x: scroll;
+    border:1px solid greenyellow;
 }
 
 .saveButton{
@@ -73,10 +82,15 @@ div.tabelOverView{
     
 } 
 
-
 .chooseButton{
     float: left;
     margin-top: 150px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.ePools{
+     margin-top: 50px;
+    margin-left: 100px;
+
 }
