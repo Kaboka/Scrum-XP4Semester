@@ -4,6 +4,9 @@
  */
 package RESTClient;
 
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -81,14 +84,14 @@ public class StudentClientTest {
      * Test of findAll_JSON method, of class StudentClient.
      */
     @Test
-    public void testFindAll_JSON() {
-//        System.out.println("findAll_JSON");
-//        StudentClient instance = new StudentClient();
-//        Object expResult = null;
-//        Object result = instance.findAll_JSON(null);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+    public void testFindAll_JSON() throws JSONException {
+        System.out.println("findAll_JSON");
+        StudentClient instance = new StudentClient();
+        JSONArray result = instance.findAll_JSON(JSONArray.class); 
+        JSONObject o = (JSONObject)result.get(0);
+        System.out.println(o.toString());
+        System.out.println(o.getString("fullName"));
+        assertNotNull(result);
     }
 
     /**
@@ -190,13 +193,10 @@ public class StudentClientTest {
      */
     @Test
     public void testFind_JSON() {
-//        System.out.println("find_JSON");
-//        StudentClient instance = new StudentClient();
-//        Object expResult = null;
-//        Object result = instance.find_JSON(null);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("find_JSON");
+        StudentClient instance = new StudentClient();
+        Object result = instance.find_JSON(JSONObject.class, "1");
+        assertNotNull(result);
     }
 
     /**
