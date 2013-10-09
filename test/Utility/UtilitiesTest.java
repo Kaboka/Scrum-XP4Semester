@@ -4,8 +4,8 @@
  */
 package Utility;
 
-import classes.Elev;
-import classes.Fag;
+import classes.Student;
+import classes.Course;
 import interfaces.IStudent;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,26 +44,26 @@ public class UtilitiesTest {
     @Test
     public void testSortGood() {
         //set up
-        final IStudent mockIStudent1 = new Elev("Per", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent1.setTilfredshed(4);
-        final IStudent mockIStudent2 = new Elev("Anna", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent2.setTilfredshed(1);
-        final IStudent mockIStudent3 = new Elev("Ole", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent3.setTilfredshed(3);
-        final IStudent mockIStudent4 = new Elev("Lars", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent4.setTilfredshed(4);
-        final IStudent mockIStudent5 = new Elev("Mathias", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent5.setTilfredshed(2);
-        final IStudent mockIStudent6 = new Elev("Nicklas", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent6.setTilfredshed(4);
-        final IStudent mockIStudent7 = new Elev("Ib", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent7.setTilfredshed(1);
-        final IStudent mockIStudent8 = new Elev("Ida", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent8.setTilfredshed(3);
-        final IStudent mockIStudent9 = new Elev("Kasper", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent9.setTilfredshed(2);
-        final IStudent mockIStudent10 = new Elev("Lasse", new Fag(" "), new Fag(" "), new Fag(" "), new Fag(" "));
-        mockIStudent10.setTilfredshed(2);
+        final IStudent mockIStudent1 = new Student("Per", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent1.setSatifaction(4);
+        final IStudent mockIStudent2 = new Student("Anna", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent2.setSatifaction(1);
+        final IStudent mockIStudent3 = new Student("Ole", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent3.setSatifaction(3);
+        final IStudent mockIStudent4 = new Student("Lars", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent4.setSatifaction(4);
+        final IStudent mockIStudent5 = new Student("Mathias", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent5.setSatifaction(2);
+        final IStudent mockIStudent6 = new Student("Nicklas", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent6.setSatifaction(4);
+        final IStudent mockIStudent7 = new Student("Ib", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent7.setSatifaction(1);
+        final IStudent mockIStudent8 = new Student("Ida", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent8.setSatifaction(3);
+        final IStudent mockIStudent9 = new Student("Kasper", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent9.setSatifaction(2);
+        final IStudent mockIStudent10 = new Student("Lasse", new Course(" "), new Course(" "), new Course(" "), new Course(" "));
+        mockIStudent10.setSatifaction(2);
 
         ArrayList<IStudent> students = new ArrayList<IStudent>();
 
@@ -101,7 +101,7 @@ public class UtilitiesTest {
     @Test
     public void testConvertGood() {
         String string = "[\"Test\",\"Globalization\"]";
-        ArrayList<Fag> fag = (ArrayList<Fag>) Utilities.convertToFag(string);
+        ArrayList<Course> fag = (ArrayList<Course>) Utilities.convertToCourse(string);
 
         assertEquals("Test", fag.get(0).getName());
         assertEquals("Globalization", fag.get(1).getName());
@@ -110,39 +110,39 @@ public class UtilitiesTest {
     @Test(expected = IllegalArgumentException.class)
     public void testConvertBad() {
         String string = "";
-        Utilities.convertToFag(string);
+        Utilities.convertToCourse(string);
     }
     
     @Test
     public void testSatisfactionGood() {
-        Collection<Fag> poolA;
-        Collection<Fag> poolB;
+        Collection<Course> poolA;
+        Collection<Course> poolB;
         Collection<IStudent> elever;
-        Elev per;
-        Elev peter;
+        Student per;
+        Student peter;
         poolA = new ArrayList();
         poolB = new ArrayList();
         elever = new ArrayList();
-        poolA.add(new Fag("C#"));
-        poolA.add(new Fag("Test"));
-        poolB.add(new Fag("HCI"));
-        poolB.add(new Fag("Globalization"));
-        per = new Elev("per", new Fag("C#"), new Fag("Test"), new Fag("HCI"), new Fag("Globalization"));
-        peter = new Elev("peter", new Fag("C#"), new Fag("Project management"), new Fag("Apps and innovation"), new Fag("C++"));
+        poolA.add(new Course("C#"));
+        poolA.add(new Course("Test"));
+        poolB.add(new Course("HCI"));
+        poolB.add(new Course("Globalization"));
+        per = new Student("per", new Course("C#"), new Course("Test"), new Course("HCI"), new Course("Globalization"));
+        peter = new Student("peter", new Course("C#"), new Course("Project management"), new Course("Apps and innovation"), new Course("C++"));
         elever.add(per);
         elever.add(peter);
-        Utilities.udregnTilfredshed(elever, poolA, poolB);
+        Utilities.calculateSatifaction(elever, poolA, poolB);
 
-        assertEquals(3, per.getTilfredshed());
-        assertEquals(1, peter.getTilfredshed());
+        assertEquals(3, per.getSatifaction());
+        assertEquals(1, peter.getSatifaction());
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void testSatisfactionBad() {
-        Collection<Fag> poolA = new ArrayList();
-        Collection<Fag> poolB = new ArrayList();
+        Collection<Course> poolA = new ArrayList();
+        Collection<Course> poolB = new ArrayList();
         Collection<IStudent> elever = new ArrayList();
         
-        Utilities.udregnTilfredshed(elever, poolA, poolB);
+        Utilities.calculateSatifaction(elever, poolA, poolB);
     }
 }

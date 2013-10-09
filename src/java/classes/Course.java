@@ -1,11 +1,11 @@
 
 package classes;
 
-public class Fag {
+public class Course {
     
     String name;
     
-    public Fag(String name){
+    public Course(String name){
         this.name = name;
     };
     public String getName(){

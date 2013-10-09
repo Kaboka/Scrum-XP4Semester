@@ -76,17 +76,17 @@
                 function generateURL() {
                     var result = "AjaxServlet?";
                     var count = 1;
-                    var poolA = "poolAFag"
-                    var poolB = "poolBFag"
+                    var poolA = "poolACourse"
+                    var poolB = "poolBCourse"
                     $("#poolAList > option").each(function() {
                         if (count === 1)
                         {
-                            poolA = "poolAFag"
+                            poolA = "poolACourse"
                             poolA += count
                             count++;
                             result += poolA + "=" + $(this).val();
                         } else {
-                            poolA = "poolAFag"
+                            poolA = "poolACourse"
                             poolA += count
                             count++;
                             result += "&" + poolA + "=" + $(this).val();
@@ -95,7 +95,7 @@
 
                     count = 1;
                     $("#poolBList > option").each(function() {
-                        poolB = "poolBFag"
+                        poolB = "poolBCourse"
                         poolB += count
                         count++;
                         result += "&" + poolB + "=" + $(this).val();
@@ -118,9 +118,9 @@
                 }
 
                 function ranking(data) {
-                    $("#overview tr.slet").remove();
+                    $("#overview tr.remove").remove();
                     var count = 0;
-                    $("#overview").append("<tr class='slet'><td class='tabelOverView'></td></tr>");
+                    $("#overview").append("<tr class='remove'><td class='tabelOverView'></td></tr>");
                     $("#poolAList > option").each(function() {
                         $("#overview tr:last").append("<td class='tabelOverView'>" + $(this).text() + "</td></tr>");
                         count++;
@@ -142,16 +142,16 @@
 
                         //Color
                         if (obj.tilfredshed === 1) {
-                            $("#overview").append("<tr class='slet'><td style='background-color: red;'>" + obj.name + "</td>");
+                            $("#overview").append("<tr class='remove'><td style='background-color: red;'>" + obj.name + "</td>");
                         }
                         if (obj.tilfredshed === 2) {
-                            $("#overview").append("<tr class='slet'><td style='background-color: orange;'>" + obj.name + "</td>");
+                            $("#overview").append("<tr class='remove'><td style='background-color: orange;'>" + obj.name + "</td>");
                         }
                         if (obj.tilfredshed === 3) {
-                            $("#overview").append("<tr class='slet'><td style='background-color: yellow;'>" + obj.name + "</td>");
+                            $("#overview").append("<tr class='remove'><td style='background-color: yellow;'>" + obj.name + "</td>");
                         }
                         if (obj.tilfredshed === 4) {
-                            $("#overview").append("<tr class='slet'><td style='background-color: green;'>" + obj.name + "</td>");
+                            $("#overview").append("<tr class='remove'><td style='background-color: green;'>" + obj.name + "</td>");
                         }
 
                         //Numbers
@@ -191,7 +191,7 @@
         <div id="frame" >
             <div class="subjects" id="electiveSubjects">
                 <h4>Subjects</h4>
-                <form method="POST" action="example.cgi">
+               
                     <select id="eSubjects" name="eSubjects" size="15">
                         <option value="C#">C#</option>
                         <option value="Apps_and_innovation">Apps and innovation</option>
@@ -202,7 +202,7 @@
                         <option value="Project_management">Project management</option>
                         <option value="Algorithms">Algorithms</option>
                     </select>
-                </form>
+             
             </div>
 
             <div class="chooseButton">
@@ -228,18 +228,18 @@
             <div class="choosenSubjects">
                 <div class="subjects" id="PoolA">
                     <h4>Pool A</h4>
-                    <form method="POST" >
-                        <select id="poolAList" name="color5" size="2" >
+                
+                        <select id="poolAList" size="2" >
                         </select>
-                    </form>
+              
                 </div>
 
                 <div class="subjects" id="PoolB" >
                     <h4>Pool B</h4>
-                    <form method="POST">
-                        <select id="poolBList" name="color5" size="2" >                      
+                
+                        <select id="poolBList"  size="2" >                      
                         </select>
-                    </form>
+                 
                 </div>
             </div>
             <div style="clear:both;"></div>
