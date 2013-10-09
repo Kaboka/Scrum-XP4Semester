@@ -41,10 +41,8 @@ public class StudentCommand implements AjaxCommand {
         poolB = new ArrayList<>();
 
         poolA = Utilities.convertToCourse(req.getParameter("poolA"));
-        System.out.println(req.getParameter("poolA") + " poolA");
 
         poolB = Utilities.convertToCourse(req.getParameter("poolB"));
-        System.out.println(req.getParameter("poolB") + " poolB");
 
 
         JSONArray jStudents = sC.findAll_JSON(JSONArray.class);

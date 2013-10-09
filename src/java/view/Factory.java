@@ -9,6 +9,7 @@ import commands.Command;
 import commands.GetCoursesCommand;
 import commands.GetCoursesU5;
 import commands.PersistCommand;
+import commands.PersistPoolsCommand;
 import commands.StudentCommand;
 import java.util.HashMap;
 import java.util.Map;

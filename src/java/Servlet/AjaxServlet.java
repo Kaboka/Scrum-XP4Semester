@@ -35,6 +35,7 @@ public class AjaxServlet extends HttpServlet {
         try {
            out.print(command.execute(req));
         } catch (Exception ex) {
+            ex.printStackTrace();
             Logger.getLogger(AjaxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
