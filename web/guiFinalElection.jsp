@@ -21,23 +21,31 @@
                 var fPrio = new Array();
                 var sPrio = new Array();
                 
+                
                 $.ajax({url: "AjaxServlet?command=getPools",
                     cache: false,
                     dataType: "json",
                     success: genPools
                 });
                 
+                
                 function genPools(data){
-                    var ArrayPoolA = new Array();
-                    var ArrayPoolB = new Array();
-                    ArrayPoolA.add(data.get(0));
-                    ArrayPoolB.add(data.get(1));
+
+                    var ArrayPoolA = data[0];
+                    var ArrayPoolB = data[1]; 
+                    
                     $.each(ArrayPoolA, function(i, obj){
-                        $("#eSubjectsPoolA").append("<option value='"+obj.toString()+"'>"+obj.toString+"</option>");
+                        $("#eSubjectsPoolA").append("<option value='"+obj.toString()+"'>"+obj.toString()+"</option>");
                     });
                     $.each(ArrayPoolB, function(i, obj){
-                        $("#eSubjectsPoolB").append("<option value='"+obj.toString()+"'>"+obj.toString+"</option>");
+                        $("#eSubjectsPoolB").append("<option value='"+obj.toString()+"'>"+obj.toString()+"</option>");
                     });
+//                    element = null;
+//                    for(var i = 0; i < ArrayPoolA.length; i++){
+//                        for(var j = 0; i <)
+//                        element = ArrayPoolA[i];
+//                        $("#eSubjectsPoolA").append("<option value='"+element.toString()+"'>"+element.toString()+"</option>");
+//                    }
                 }
 
                 $("#addA1").click(function() {
