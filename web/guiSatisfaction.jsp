@@ -124,21 +124,21 @@
                 function ranking(data) {
                     $("#overview tr.slet").remove();
                     var count = 0;
-                    $("#overview").append("<tr class='slet'><td></td></tr>");
+                    $("#overview").append("<tr class='slet'><td class='tabelOverView'></td></tr>");
                     $("#poolAList > option").each(function() {
-                        $("#overview tr:last").append("<td>" + $(this).text() + "</td></tr>");
+                        $("#overview tr:last").append("<td class='tabelOverView'>" + $(this).text() + "</td></tr>");
                         count++;
                     });
                     $("#ovPoolA").attr('colspan', count);
                     count = 0;
                     $("#poolBList > option").each(function() {
-                        $("#overview tr:last").append("<td>" + $(this).text() + "</td></tr>");
+                        $("#overview tr:last").append("<td class='tabelOverView'>" + $(this).text() + "</td></tr>");
                         count++;
                     });
                     $("#ovPoolB").attr('colspan', count);
                     count = 0;
                     $("#eSubjects > option").each(function() {
-                        $("#overview tr:last").append("<td>" + $(this).text() + "</td></tr>");
+                        $("#overview tr:last").append("<td class='tabelOverView'>" + $(this).text() + "</td></tr>");
                         count++;
                     });
                     $("#ovNon").attr('colspan', count);
@@ -161,82 +161,31 @@
                         //Numbers
                         $("#poolAList > option").each(function() {
                             if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>1</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
                             } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>2</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
-                                $("#overview tr:last").append("<td>0</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
                             }
                         });
                         $("#poolBList > option").each(function() {
                             if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>1</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
                             } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>2</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
-                                $("#overview tr:last").append("<td>0</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
                             }
                         });
                         $("#eSubjects > option").each(function() {
                             if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>1</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>1</td>");
                             } else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text()) {
-                                $("#overview tr:last").append("<td>2</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>2</td>");
                             } else {
-                                $("#overview tr:last").append("<td>0</td>");
+                                $("#overview tr:last").append("<td class='tabelOverView'>0</td>");
                             }
                         });
-                        //----------------------------------------------------------------------------------
-                        /*
-                         if (obj.forstePrio1.name === $("#poola1").text() || obj.forstePrio2.name === $("#poola1").text()) {
-                         $("#overview tr:last").append("<td>1</td>");
-                         }
-                         else if (obj.andenPrio1.name === $("#poola1").text() || obj.andenPrio2.name === $("#poola1").text())
-                         $("#overview tr:last").append("<td>2</td>");
-                         else
-                         $("#overview tr:last").append("<td>0</td>");
-                         
-                         
-                         if (obj.forstePrio1.name === $("#poola2").text() || obj.forstePrio2.name === $("#poola2").text()) {
-                         $("#overview tr:last").append("<td>1</td>");
-                         }
-                         else if (obj.andenPrio1.name === $("#poola2").text() || obj.andenPrio2.name === $("#poola2").text())
-                         $("#overview tr:last").append("<td>2</td>");
-                         else
-                         $("#overview tr:last").append("<td>0</td>");
-                         
-                         if (obj.forstePrio1.name === $("#poolb1").text() || obj.forstePrio2.name === $("#poolb1").text()) {
-                         $("#overview tr:last").append("<td>1</td>");
-                         }
-                         else if (obj.andenPrio1.name === $("#poolb1").text() || obj.andenPrio2.name === $("#poolb1").text())
-                         $("#overview tr:last").append("<td>2</td>");
-                         else
-                         $("#overview tr:last").append("<td>0</td>");
-                         
-                         if (obj.forstePrio1.name === $("#poolb2").text() || obj.forstePrio2.name === $("#poolb2").text()) {
-                         $("#overview tr:last").append("<td>1</td>");
-                         }
-                         else if (obj.andenPrio1.name === $("#poolb2").text() || obj.andenPrio2.name === $("#poolb2").text())
-                         $("#overview tr:last").append("<td>2</td>");
-                         else
-                         $("#overview tr:last").append("<td>0</td>");
-                         
-                         
-                         
-                         $("#eSubjects > option").each(function() {
-                         if (obj.forstePrio1.name === $(this).text() || obj.forstePrio2.name === $(this).text()) {
-                         $("#overview tr:last").append("<td>1</td>");
-                         }
-                         else if (obj.andenPrio1.name === $(this).text() || obj.andenPrio2.name === $(this).text())
-                         $("#overview tr:last").append("<td>2</td>");
-                         else
-                         $("#overview tr:last").append("<td>0</td>");
-                         }
-                         
-                         
-                         
-                         );*/
-
                     });
                 }
             });
@@ -311,11 +260,7 @@
                         <th class="tabelOverView" id="ovPoolA" colspan="3">Pool A</th>
                         <th class="tabelOverView" id="ovPoolB" colspan="1">Pool B</th>
                         <th class="tabelOverView" id="ovNon" colspan="10">Not chosen subjects</th>
-
                     </tr>
-
-
-
                 </table>
             </div>
             <div style="clear: both;"></div>

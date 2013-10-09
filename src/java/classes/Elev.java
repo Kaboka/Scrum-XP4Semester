@@ -1,9 +1,9 @@
 
 package classes;
 
-import interfaces.IElev;
+import interfaces.IStudent;
 
-public class Elev implements IElev{
+public class Elev implements IStudent{
     Fag forstePrio1;
     Fag forstePrio2;
     Fag andenPrio1;

@@ -6,7 +6,7 @@ package interfaces;
 
 import classes.Fag;
 
-public interface IElev {
+public interface IStudent {
 
     Fag getForstePrio1();
 

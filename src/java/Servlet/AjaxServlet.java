@@ -4,12 +4,11 @@
  */
 package Servlet;
 
-import Utility.SortingThing;
+import Utility.Utilities;
 import classes.Elev;
 import classes.Fag;
-import classes.Tilfredshed;
 import com.google.gson.Gson;
-import interfaces.IElev;
+import interfaces.IStudent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class AjaxServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         StudentClient sC = new StudentClient();
-        ArrayList<IElev> elever = new ArrayList<>();
+        ArrayList<IStudent> elever = new ArrayList<>();
 
         Collection<Fag> poolA, poolB;
         poolA = new ArrayList<>();
@@ -68,14 +67,14 @@ public class AjaxServlet extends HttpServlet {
             }
         }
 
-        Tilfredshed tf = new Tilfredshed();
-        tf.udregnTilfredshed(elever, poolA, poolB);
+
+        Utilities.udregnTilfredshed(elever, poolA, poolB);
         poolA = null;
         poolB = null;
 
 
         Gson json = new Gson();
-        String something = json.toJson(SortingThing.sort(elever));
+        String something = json.toJson(Utilities.sort(elever));
         out.print(something);
     }
 
