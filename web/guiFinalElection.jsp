@@ -165,7 +165,7 @@
                         
                         var json = JSON.stringify(fPrio);
                         var json2 = JSON.stringify(sPrio);
-                        $.ajax({url: "AjaxServlet?id=" + $("#studentID").val(),
+                        $.ajax({url: "AjaxServlet?command=persist&id=" + $("#studentID").val(),
                        
                             cache: false,
                             dataType: "json",
